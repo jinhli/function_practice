@@ -1,0 +1,88 @@
+1.sorted
+d
+{1: 6, 2: 7, 3: 8, 4: 9, 5: 10, 6: 11, 7: 12, 8: 13, 9: 14}
+
+>>> sorted(d.items(),key=lambda x:x[1],reverse=True)
+[(9, 14), (8, 13), (7, 12), (6, 11), (5, 10), (4, 9), (3, 8), (2, 7), (1, 6)]
+>>> sorted(d.items(),reverse=True,key=lambda x:x[1])
+[(9, 14), (8, 13), (7, 12), (6, 11), (5, 10), (4, 9), (3, 8), (2, 7), (1, 6)]
+>>>
+
+2. eval
+可以处理单行代码
+可以拿到返回值
+
+3.exec
+可以处理多行代码
+但是拿不到返回值
+
+4.map #函数 n 来自后面的data
+map(lambda n:n*n, data)
+
+5.filter --#筛选出True的值
+# data = list(range(10))
+#
+#
+# print(list(filter(lambda n: n if n%2 ==1 else False, data)))
+
+6.print
+s = 'hello, my name is jinhua '
+print(s,end='>>>')
+print(s,sep='->')
+可以直接print到文件
+s='我是花花'
+f= open('user_1.txt',w)
+
+print(s,sep='|',end='\n',file=f)
+
+#shutil 模块
+#高级的文件，文件夹，压缩模块，处理模块
+
+#序列化模块
+什么叫序列化？
+
+序列化是指把内存里的数据类型转变成字符串，以使其能存储到硬盘或通过网络传输到远程，因为硬盘或网络传输时只能接受bytes
+用于序列化的两个模块
+
+json，用于字符串 和 python数据类型间进行转换
+pickle，用于python特有的类型 和 python的数据类型间进行转换
+
+1.json
+json.dump json.load (保存到文件)
+json.dumps json.loads (字典和字符串的转换，还保存在内存)
+   作用1： 可以进行网络传输，共享给远程其他人
+      2.定义了不同之间的交互规则（jsson, 简单，可读性好）
+2.
+  缺点：只能支持int\str\list\tuple\dict
+
+Pickle:
+还可以把函数序列化
+
+优点：专为python设计，支持python所有的数据类型
+
+缺点：只能在python中使用，存储数据占空间大
+
+#shelve 模块
+shelve模块是一个简单的k,v将内存数据通过文件持久化的模块，可以持久化任何pickle可支持的python数据格式
+shelve也是python提供给我们的序列化工具，比pickle用起来更简单一些。
+shelve只提供给我们一个open方法，是用key来访问的，使用起来和字典类似。
+
+import shelve
+
+f = shelve.open('user_1_new')
+names = ["alex", "rain", "test"]
+info = {'name':'alex','age':22}
+f["names"] = names  # 持久化列表
+f['info_dic'] = info
+f.close()
+
+
+#xml 模块
+
+
+#configparser 模块
+
+
+#hashlib 模块
+hash
+MD5
